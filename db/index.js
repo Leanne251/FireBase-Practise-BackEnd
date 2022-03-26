@@ -8,7 +8,7 @@ const pool = new pg.Pool({
 	}
 });
 
-console.log('pool', pool);
+// console.log('pool', pool);
 export default function query(text, params) {
 	return pool.query(text, params);
 }

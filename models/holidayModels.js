@@ -20,11 +20,11 @@ getAllHolidays();
 
 // console.log(getHolidays());
 
-export async function createData({ destination, style, price }) {
+export async function createData({ userID, destination, style, price }) {
 	const data = await query(
-		`INSERT INTO holidays(destination, style, price) VALUES($1, $2, $3) 
+		`INSERT INTO holidays(userID, destination, style, price) VALUES($1, $2, $3, $4) 
     RETURNING destination;`,
-		[ destination, style, price ]
+		[ userID, destination, style, price ]
 	);
 
 	return data.rows;

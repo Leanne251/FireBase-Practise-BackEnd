@@ -15,14 +15,24 @@ app.use(express.urlencoded({ extended: false }));
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 //Firebase auth middleware checks which user is currently logged in updating req with user (req.user) which can be used in routes
-// app.use(firebaseAuth);
+
 app.use(cors());
 app.use(express.json());
-app.use('/holidays', router);
 app.use(express.static(path.join(__dirname, 'public')));
+app.options('*', cors()); // googled to try and help with cors
+
+app.use(firebaseAuth);
+
+app.use('/holidays', router);
 
 app.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname, '/index.html')); // path.join to the directory name youare currrently in and the file you want to serve e.g index.html
+});
+
+//copied from final project to try and help with cors?
+app.use(function(err, req, res, next) {
+	console.error(err.stack);
+	res.status(500).json(err);
 });
 
 app.listen(PORT, function() {

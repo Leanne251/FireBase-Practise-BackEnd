@@ -13,7 +13,7 @@ async function populateTable() {
 			`INSERT INTO holidays (destination, style, price) VALUES ($1, $2, $3) RETURNING *`,
 			[ destination, style, price ]
 		);
-		console.log('populate response', response);
+		// console.log('populate response', response);
 	}
 }
 

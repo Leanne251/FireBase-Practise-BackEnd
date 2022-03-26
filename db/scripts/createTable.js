@@ -14,7 +14,7 @@ let SQLString = `CREATE TABLE IF NOT EXISTS holidays
 
 async function createTable() {
 	const res = await query(SQLString);
-	console.log('res', res);
+	// console.log('res', res);
 }
 
 createTable();

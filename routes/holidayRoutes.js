@@ -7,7 +7,9 @@ const router = express.Router();
 
 router.get('/', async function(req, res) {
 	const allHolidays = await getAllHolidays();
-	console.log('allHolidays', allHolidays);
+
+	console.log(req.headers.authorization, 'header');
+
 	res.json({
 		success: true,
 		payload: allHolidays
